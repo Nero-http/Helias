@@ -1,113 +1,113 @@
 
-<section class="contact section" id="contact">
-  <div class="container contact-container">
+<section id="contact" class="contact section">
+  <div class="container">
     <div class="contact-content">
-      <span class="section-label">GET IN TOUCH / 05</span>
+      <p class="section-label">05 / GET IN TOUCH</p>
 
       <h2>
-        Have an idea?
-        <span>Let's create it.</span>
+        Have an idea?<br />
+        Let's make it <span>real.</span>
       </h2>
 
-      <p>
-        Have a game concept or a creative project in mind?
-        We'd love to hear about it.
+      <p class="contact-description">
+        Every great project starts with an idea.
+        Let's turn yours into something meaningful.
       </p>
 
-      <a
-        href="mailto:hello@heliasstudio.com"
-        class="contact-link"
-      >
-        hello@heliasstudio.com <span>↗</span>
-      </a>
-    </div>
-
-    <div class="contact-side">
-      <span>LET'S BUILD SOMETHING MEANINGFUL.</span>
-      <a href="mailto:hello@heliasstudio.com">
-        Start a conversation ↗
+      <a href="mailto:hello@helias.studio" class="contact-button">
+        Start a conversation <span>↗</span>
       </a>
     </div>
   </div>
+
+  <div class="contact-decoration">H.</div>
 </section>
 
 <style>
+.contact {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+  min-height: clamp(470px, 55vw, 640px);
+}
+
+.contact-content {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+}
+
+.section-label {
+  color: var(--accent);
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  margin: 0 0 22px;
+}
+
+.contact h2 {
+  color: var(--text);
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 7vw, 6.25rem);
+  line-height: 1;
+  letter-spacing: -0.06em;
+  margin: 0;
+}
+
+.contact h2 span {
+  color: var(--accent);
+}
+
+.contact-description {
+  max-width: 430px;
+  color: var(--muted);
+  line-height: 1.9;
+  margin: 22px 0 28px;
+}
+
+.contact-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  padding: 15px 20px;
+  background: var(--accent);
+  color: #050505;
+  font-size: 14px;
+  font-weight: 700;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0, 239, 80, 0.16);
+}
+
+.contact-button span {
+  font-size: 18px;
+}
+
+.contact-decoration {
+  position: absolute;
+  right: max(2%, calc((100% - var(--container)) / 2));
+  bottom: -0.2em;
+  font-family: var(--font-heading);
+  font-size: clamp(12rem, 32vw, 30rem);
+  line-height: 1;
+  font-weight: 700;
+  color: var(--text);
+  opacity: 0.025;
+  pointer-events: none;
+}
+
+@media (max-width: 700px) {
   .contact {
-    background: var(--surface);
+    min-height: 0;
   }
 
-  .contact-container {
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
-    gap: 50px;
+  .contact h2 {
+    font-size: clamp(2.8rem, 12vw, 4.5rem);
   }
 
-  .section-label {
-    color: var(--accent);
-    font-size: 9px;
-    letter-spacing: 1.7px;
-  }
-
-  .contact-content h2 {
-    margin: 22px 0;
-    color: var(--text);
-    font-family: var(--font-heading);
-    font-size: clamp(42px, 6vw, 70px);
-    font-weight: 500;
-    line-height: 1.08;
-    letter-spacing: -3px;
-  }
-
-  .contact-content h2 span {
-    display: block;
-    color: #777;
-  }
-
-  .contact-content p {
-    max-width: 420px;
-    color: var(--muted);
-    font-size: 12px;
-    line-height: 1.9;
-  }
-
-  .contact-link {
-    display: inline-block;
-    margin-top: 30px;
-    padding-bottom: 10px;
-    color: var(--text);
-    font-size: 13px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .contact-link span {
-    margin-left: 12px;
-    color: var(--accent);
-  }
-
-  .contact-side {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    color: var(--muted);
-    font-size: 9px;
-    letter-spacing: 1.2px;
-  }
-
-  .contact-side a {
-    color: var(--accent);
-    font-size: 11px;
-    letter-spacing: 0;
-  }
-
-  @media (max-width: 700px) {
-    .contact-container {
-      align-items: flex-start;
-      flex-direction: column;
-    }
-
-    .contact-content h2 {
-      letter-spacing: -2px;
-    }
-  }
+  .contact-decoration { right: -5%; }
+}
 </style>

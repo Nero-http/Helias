@@ -1,45 +1,36 @@
 
 ---
-import { assets } from "../data/assets";
-
-const links = [
-  { label: "Home", href: "#home" },
-  { label: "Services", href: "#services" },
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" }
-];
+const currentYear = new Date().getFullYear();
 ---
 
 <footer class="footer">
   <div class="container">
     <div class="footer-main">
       <a href="#home" class="footer-brand">
-        <img src={assets.logo} alt="HELIAS logo" />
+        <img src="/image/logo.png" alt="Helias Logo" />
         <span>HELIAS<span>.</span></span>
       </a>
 
-      <p>Creating worlds. Building experiences.</p>
+      <p>
+        A creative digital development team<br />
+        driven by ideas, technology, and design.
+      </p>
 
-      <nav aria-label="Footer navigation">
-        {links.map((link) => (
-          <a href={link.href}>{link.label}</a>
-        ))}
-      </nav>
+      <a href="#home" class="back-top">BACK TO TOP ↑</a>
     </div>
 
     <div class="footer-bottom">
-      <span>© {new Date().getFullYear()} HELIAS STUDIO. ALL RIGHTS RESERVED.</span>
-      <a href="#home">BACK TO TOP ↑</a>
+      <span>© {currentYear} HELIAS. ALL RIGHTS RESERVED.</span>
+      <span>BUILT WITH CREATIVITY.</span>
     </div>
   </div>
 </footer>
 
 <style>
   .footer {
+    padding: 55px 0 22px;
     background: var(--bg);
     border-top: 1px solid var(--border);
-    padding: 45px 0 22px;
   }
 
   .footer-main {
@@ -47,50 +38,44 @@ const links = [
     align-items: center;
     justify-content: space-between;
     gap: 25px;
-    padding-bottom: 40px;
+    padding-bottom: 45px;
   }
 
   .footer-brand {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 9px;
+    gap: 10px;
     color: var(--text);
-    font-family: var(--font-heading);
-    font-size: 18px;
-    font-weight: 700;
+    font: 700 19px var(--font-heading);
     letter-spacing: 1.5px;
   }
 
   .footer-brand img {
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
     object-fit: contain;
+    filter: brightness(0) invert(1);
   }
 
-  .footer-brand span span {
-    color: var(--accent);
+  html[data-theme="light"] .footer-brand img {
+    filter: brightness(0);
   }
+
+  .footer-brand span span { color: var(--accent); }
 
   .footer-main p {
     color: var(--muted);
+    font-size: 11px;
+    line-height: 1.8;
+  }
+
+  .back-top {
+    color: var(--text);
     font-size: 10px;
+    letter-spacing: 1px;
   }
 
-  .footer-main nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  .footer-main nav a {
-    color: var(--muted);
-    font-size: 10px;
-    transition: color 0.2s ease;
-  }
-
-  .footer-main nav a:hover {
-    color: var(--accent);
-  }
+  .back-top:hover { color: var(--accent); }
 
   .footer-bottom {
     display: flex;
@@ -99,26 +84,19 @@ const links = [
     padding-top: 20px;
     border-top: 1px solid var(--border);
     color: var(--muted);
-    font-size: 8px;
+    font-size: 9px;
     letter-spacing: 1px;
   }
 
-  .footer-bottom a {
-    color: var(--accent);
-  }
-
-  @media (max-width: 750px) {
+  @media (max-width: 600px) {
     .footer-main {
       align-items: flex-start;
       flex-direction: column;
     }
 
-    .footer-main nav {
-      gap: 15px;
-    }
-
     .footer-bottom {
       flex-direction: column;
+      gap: 10px;
     }
   }
 </style>

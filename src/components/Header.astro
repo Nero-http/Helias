@@ -3,6 +3,7 @@
 const links = [
   { label: "Home", href: "#home" },
   { label: "Services", href: "#services" },
+  { label: "Process", href: "#process" },
   { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" }
 ];
@@ -11,56 +12,124 @@ const links = [
 <header class="site-header">
   <div class="header-inner">
     <a href="#home" class="brand" aria-label="HELIAS home">
-      <img src="/image/logo.png" alt="Helias Logo" />
+      <img src="/image/logo.png" alt="Helias Logo" class="brand-logo" />
       <span>HELIAS<span class="accent">.</span></span>
     </a>
 
     <nav class="desktop-nav" aria-label="Main navigation">
-      {links.map((link) => (
-        <a href={link.href}>{link.label}</a>
-      ))}
+      {links.map((link) => <a href={link.href}>{link.label}</a>)}
     </nav>
 
-    <a href="#contact" class="header-contact">
-      Let's talk <span>↗</span>
-    </a>
+    <div class="header-actions">
+      <button
+        class="theme-toggle"
+        id="theme-toggle"
+        type="button"
+        aria-label="Switch to light mode"
+        title="Switch theme"
+      >
+        <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z" />
+        </svg>
+      </button>
 
-    <button
-      class="menu-toggle"
-      aria-label="Toggle navigation"
-      aria-expanded="false"
-      aria-controls="mobile-nav"
-    >
-      <span></span>
-      <span></span>
-    </button>
+      <a href="#contact" class="header-contact">
+        Let's talk <span>↗</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        type="button"
+      >
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </div>
 
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
-    {links.map((link) => (
-      <a href={link.href}>{link.label}</a>
-    ))}
-    <a href="#contact">Contact ↗</a>
+    {links.map((link) => <a href={link.href}>{link.label}</a>)}
+    <a href="#contact">Let's talk ↗</a>
   </nav>
 </header>
 
 <script>
-  const header = document.querySelector(".site-header");
   const toggle = document.querySelector(".menu-toggle");
   const mobileNav = document.querySelector(".mobile-nav");
+  const themeButton = document.querySelector("#theme-toggle");
+
+  function closeMenu() {
+    toggle?.setAttribute("aria-expanded", "false");
+    toggle?.setAttribute("aria-label", "Open navigation");
+    mobileNav?.classList.remove("is-open");
+  }
 
   toggle?.addEventListener("click", () => {
     const isOpen = toggle.getAttribute("aria-expanded") === "true";
 
     toggle.setAttribute("aria-expanded", String(!isOpen));
+    toggle.setAttribute("aria-label", isOpen ? "Open navigation" : "Close navigation");
     mobileNav?.classList.toggle("is-open", !isOpen);
   });
 
   mobileNav?.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      mobileNav.classList.remove("is-open");
-      toggle?.setAttribute("aria-expanded", "false");
-    });
+    link.addEventListener("click", closeMenu);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeMenu();
+  });
+
+  function applyTheme(theme: string) {
+    document.documentElement.dataset.theme = theme;
+
+    const isDark = theme === "dark";
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute("content", isDark ? "#050505" : "#f7f7f5");
+
+    themeButton?.setAttribute(
+      "aria-label",
+      isDark ? "Switch to light mode" : "Switch to dark mode"
+    );
+
+    themeButton?.setAttribute(
+      "title",
+      isDark ? "Switch to light mode" : "Switch to dark mode"
+    );
+
+    try {
+      localStorage.setItem("helias-theme", theme);
+    } catch {
+      // Theme remains active for the current page.
+    }
+  }
+
+  const initialTheme =
+    document.documentElement.dataset.theme === "light" ? "light" : "dark";
+  const isDark = initialTheme === "dark";
+
+  themeButton?.setAttribute(
+    "aria-label",
+    isDark ? "Switch to light mode" : "Switch to dark mode"
+  );
+  themeButton?.setAttribute(
+    "title",
+    isDark ? "Switch to light mode" : "Switch to dark mode"
+  );
+
+  themeButton?.addEventListener("click", () => {
+    const currentTheme =
+      document.documentElement.dataset.theme || "dark";
+
+    applyTheme(currentTheme === "dark" ? "light" : "dark");
   });
 </script>
 
@@ -69,56 +138,57 @@ const links = [
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(5, 5, 5, 0.94);
+    background: var(--bg);
     border-bottom: 1px solid var(--border);
     backdrop-filter: blur(14px);
   }
 
   .header-inner {
-    width: min(1200px, 90%);
+    width: min(var(--container), calc(100% - var(--gutter) * 2));
     min-height: 76px;
-    margin: auto;
+    margin-inline: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 20px;
   }
 
   .brand {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 9px;
     color: var(--text);
     font-family: var(--font-heading);
-    font-size: 19px;
+    font-size: 18px;
     font-weight: 700;
     letter-spacing: 1.5px;
   }
 
-  .brand img {
+  .brand-logo {
     width: 36px;
     height: 36px;
     object-fit: contain;
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease;
   }
 
-  .brand > span {
-    transform: translateY(2px);
+  html[data-theme="light"] .brand-logo {
+    filter: brightness(0);
   }
 
-  .accent {
-    color: var(--accent);
-  }
+  .accent { color: var(--accent); }
 
   .desktop-nav {
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: clamp(16px, 2.2vw, 28px);
   }
 
   .desktop-nav a,
   .header-contact {
     color: var(--muted);
     font-size: 12px;
-    transition: color 0.25s ease;
+    transition: color 0.2s ease;
   }
 
   .desktop-nav a:hover,
@@ -126,29 +196,56 @@ const links = [
     color: var(--accent);
   }
 
-  .header-contact {
-    color: var(--text);
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
   }
 
-  .header-contact span {
-    margin-left: 7px;
-    color: var(--accent);
+  .header-contact { color: var(--text); }
+  .header-contact span { color: var(--accent); }
+
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
   }
+
+  .theme-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: rotate(15deg);
+  }
+
+  .theme-toggle svg {
+    width: 17px;
+    height: 17px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .moon-icon { display: none; }
+  html[data-theme="light"] .sun-icon { display: none; }
+  html[data-theme="light"] .moon-icon { display: block; }
 
   .menu-toggle,
-  .mobile-nav {
-    display: none;
-  }
+  .mobile-nav { display: none; }
 
-  @media (max-width: 700px) {
-    .header-inner {
-      min-height: 68px;
-    }
-
+  @media (max-width: 860px) {
     .desktop-nav,
-    .header-contact {
-      display: none;
-    }
+    .header-contact { display: none; }
+
+    .header-actions { gap: 14px; }
 
     .menu-toggle {
       display: flex;
@@ -164,24 +261,51 @@ const links = [
 
     .menu-toggle span {
       width: 22px;
-      height: 1px;
-      background: white;
+      height: 1.5px;
+      background: var(--text);
+      transition: transform 0.2s ease;
+    }
+
+    .menu-toggle[aria-expanded="true"] span:first-child {
+      transform: translateY(3.75px) rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"] span:last-child {
+      transform: translateY(-3.75px) rotate(-45deg);
     }
 
     .mobile-nav {
-      padding: 0 5% 20px;
+      display: flex;
+      width: min(var(--container), calc(100% - var(--gutter) * 2));
       flex-direction: column;
-      gap: 18px;
-      border-top: 1px solid var(--border);
+      gap: 0;
+      max-height: 0;
+      margin-inline: auto;
+      padding: 0;
+      overflow: hidden;
+      border-top: 1px solid transparent;
+      opacity: 0;
+      visibility: hidden;
+      transition: max-height 0.3s ease, opacity 0.2s ease, padding 0.3s ease, border-color 0.3s ease, visibility 0.3s;
     }
 
     .mobile-nav.is-open {
-      display: flex;
+      max-height: 360px;
+      padding-block: 10px 20px;
+      border-color: var(--border);
+      opacity: 1;
+      visibility: visible;
     }
 
     .mobile-nav a {
+      padding-block: 10px;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+
+    .mobile-nav a:hover {
+      color: var(--accent);
     }
   }
 </style>

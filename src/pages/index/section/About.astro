@@ -1,120 +1,170 @@
 
----
-import { assets } from "../../../data/assets.js";
----
+<section id="about" class="about section">
+  <div class="container">
+    <div class="about-layout">
+      <div class="about-image">
+        <img
+          src="https://i.pinimg.com/736x/46/94/8d/46948db405f5bc880eb0dff059164b34.jpg"
+          alt="Creative workspace"
+          loading="lazy"
+        />
+        <span class="image-caption">CREATIVITY IN EVERY DETAIL.</span>
+      </div>
 
-<section class="about section" id="about">
-  <div class="container about-grid">
-    <div class="about-image">
-      <img
-        src={assets.workplace}
-        alt="Creative workspace"
-        loading="lazy"
-      />
-      <span>HELIAS / CREATIVE SPACE</span>
-    </div>
+      <div class="about-content">
+        <p class="section-label">03 / WHO WE ARE</p>
+        <h2>Beyond ideas.<br />Beyond <span>technology.</span></h2>
 
-    <div class="about-content">
-      <span class="section-label">ABOUT THE STUDIO / 03</span>
+        <p class="about-description">
+          HELIAS is a creative digital development team driven by imagination,
+          technology, and the desire to create something meaningful.
+        </p>
 
-      <h2>
-        Imagination is where
-        <span>everything begins.</span>
-      </h2>
+        <p class="about-description">
+          From visual editing and digital design to development and web creation,
+          we bring different creative skills together to turn ideas into reality.
+        </p>
 
-      <p>
-        HELIAS is a creative game development studio driven by
-        imagination, design, and technology.
-      </p>
-
-      <p>
-        We explore ideas, create visual worlds, and develop
-        experiences that bring creativity and interaction together.
-      </p>
-
-      <a href="#contact" class="about-link">
-        Get to know us <span>↗</span>
-      </a>
+        <div class="about-values">
+          <div>
+            <span>01</span>
+            <h3>Creativity</h3>
+          </div>
+          <div>
+            <span>02</span>
+            <h3>Innovation</h3>
+          </div>
+          <div>
+            <span>03</span>
+            <h3>Collaboration</h3>
+          </div>
+          <div>
+            <span>04</span>
+            <h3>Growth</h3>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
-  .about {
-    background: var(--surface);
+.about {
+  background: var(--bg);
+}
+
+.about-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(40px, 7vw, 88px);
+}
+
+.about-image {
+  position: relative;
+  aspect-ratio: 0.9;
+  max-height: 580px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: transform 0.65s ease, filter 0.65s ease;
+}
+
+.about-image:hover img {
+  transform: scale(1.04);
+  filter: grayscale(0);
+}
+
+.image-caption {
+  position: absolute;
+  left: 22px;
+  bottom: 22px;
+  color: #fff;
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
+}
+
+.section-label {
+  color: var(--accent);
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  margin: 0 0 22px;
+}
+
+.about-content h2 {
+  color: var(--text);
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 4.5vw, 4.25rem);
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+  margin: 0 0 24px;
+}
+
+.about-content h2 span {
+  color: var(--accent);
+}
+
+.about-description {
+  color: var(--muted);
+  line-height: 1.9;
+  max-width: 500px;
+  margin-bottom: 18px;
+}
+
+.about-values {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+.about-values div {
+  padding: 17px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.about-values span {
+  color: var(--accent);
+  font-size: 11px;
+}
+
+.about-values h3 {
+  color: var(--text);
+  font-family: var(--font-heading);
+  font-size: 15px;
+  margin: 9px 0 0;
+}
+
+@media (max-width: 850px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
   }
 
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 75px;
+  .about-image {
+    aspect-ratio: 1.35;
+    max-height: none;
   }
+}
 
-  .about-image img {
-    width: 100%;
-    height: 440px;
-    object-fit: cover;
-    background: #111;
-  }
-
-  .about-image > span {
-    display: block;
-    margin-top: 12px;
-    color: var(--muted);
-    font-size: 9px;
-    letter-spacing: 1.3px;
-  }
-
-  .section-label {
-    color: var(--accent);
-    font-size: 9px;
-    letter-spacing: 1.7px;
+@media (max-width: 500px) {
+  .about-image {
+    aspect-ratio: 1.05;
   }
 
   .about-content h2 {
-    margin: 20px 0;
-    color: var(--text);
-    font-family: var(--font-heading);
-    font-size: clamp(35px, 4.5vw, 54px);
-    line-height: 1.15;
-    letter-spacing: -2px;
-    font-weight: 500;
+    font-size: clamp(2.35rem, 11vw, 3.25rem);
   }
 
-  .about-content h2 span {
-    display: block;
-    color: #777;
-  }
-
-  .about-content p {
-    max-width: 440px;
-    margin-bottom: 17px;
-    color: var(--muted);
-    font-size: 12px;
-    line-height: 1.9;
-  }
-
-  .about-link {
-    display: inline-block;
-    margin-top: 20px;
-    color: var(--text);
-    font-size: 11px;
-  }
-
-  .about-link span {
-    margin-left: 10px;
-    color: var(--accent);
-  }
-
-  @media (max-width: 750px) {
-    .about-grid {
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
-
-    .about-image img {
-      height: 320px;
-    }
-  }
+  .about-values h3 { font-size: 14px; }
+}
 </style>
