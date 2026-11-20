@@ -1,0 +1,124 @@
+
+---
+import { assets } from "../data/assets";
+
+const links = [
+  { label: "Home", href: "#home" },
+  { label: "Services", href: "#services" },
+  { label: "About", href: "#about" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" }
+];
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-main">
+      <a href="#home" class="footer-brand">
+        <img src={assets.logo} alt="HELIAS logo" />
+        <span>HELIAS<span>.</span></span>
+      </a>
+
+      <p>Creating worlds. Building experiences.</p>
+
+      <nav aria-label="Footer navigation">
+        {links.map((link) => (
+          <a href={link.href}>{link.label}</a>
+        ))}
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© {new Date().getFullYear()} HELIAS STUDIO. ALL RIGHTS RESERVED.</span>
+      <a href="#home">BACK TO TOP ↑</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 45px 0 22px;
+  }
+
+  .footer-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    padding-bottom: 40px;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--text);
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+  }
+
+  .footer-brand img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+  }
+
+  .footer-brand span span {
+    color: var(--accent);
+  }
+
+  .footer-main p {
+    color: var(--muted);
+    font-size: 10px;
+  }
+
+  .footer-main nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-main nav a {
+    color: var(--muted);
+    font-size: 10px;
+    transition: color 0.2s ease;
+  }
+
+  .footer-main nav a:hover {
+    color: var(--accent);
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .footer-bottom a {
+    color: var(--accent);
+  }
+
+  @media (max-width: 750px) {
+    .footer-main {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .footer-main nav {
+      gap: 15px;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+    }
+  }
+</style>

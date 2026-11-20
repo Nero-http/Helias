@@ -1,0 +1,232 @@
+
+---
+import { assets } from "../data/assets";
+---
+
+<section class="hero section" id="home">
+  <div class="container hero-container">
+    <div class="hero-content">
+      <span class="eyebrow">
+        INDEPENDENT GAME DEVELOPMENT STUDIO
+      </span>
+
+      <h1>
+        Creating worlds.
+        <span>Building experiences.</span>
+      </h1>
+
+      <p>
+        We bring ideas to life through creative game development,
+        visual storytelling, and immersive digital experiences.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="primary-link">
+          Explore our work <span>↗</span>
+        </a>
+
+        <a href="#about" class="secondary-link">
+          Discover HELIAS
+        </a>
+      </div>
+
+      <div class="hero-bottom">
+        <span>CREATIVITY / TECHNOLOGY / IMAGINATION</span>
+        <span>SCROLL TO EXPLORE ↓</span>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <img
+        class="character character-one"
+        src={assets.characters[0]}
+        alt="Character concept artwork"
+        fetchpriority="high"
+      />
+      <img
+        class="character character-two"
+        src={assets.characters[1]}
+        alt="Character concept artwork"
+        loading="lazy"
+      />
+      <div class="art-label">
+        <span>01 /</span> VISUAL WORLDS
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 650px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-container {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: 55px;
+  }
+
+  .eyebrow,
+  .hero-bottom,
+  .art-label {
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 1.7px;
+  }
+
+  .eyebrow {
+    color: var(--accent);
+  }
+
+  .hero h1 {
+    max-width: 620px;
+    margin: 25px 0;
+    color: var(--text);
+    font-family: var(--font-heading);
+    font-size: clamp(43px, 6vw, 76px);
+    line-height: 1.06;
+    letter-spacing: -4px;
+    font-weight: 500;
+  }
+
+  .hero h1 span {
+    display: block;
+    color: #777;
+  }
+
+  .hero-content > p {
+    max-width: 420px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.9;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    margin-top: 34px;
+  }
+
+  .primary-link {
+    color: #050505;
+    background: var(--accent);
+    padding: 13px 17px;
+    font-size: 11px;
+    font-weight: 700;
+    transition: opacity 0.25s ease;
+  }
+
+  .primary-link:hover {
+    opacity: 0.8;
+  }
+
+  .primary-link span {
+    margin-left: 15px;
+  }
+
+  .secondary-link {
+    color: var(--text);
+    font-size: 11px;
+  }
+
+  .hero-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 95px;
+    font-size: 8px;
+  }
+
+  .hero-art {
+    position: relative;
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .character {
+    position: absolute;
+    width: 65%;
+    height: 410px;
+    object-fit: cover;
+    background: #101010;
+  }
+
+  .character-one {
+    left: 0;
+    top: 0;
+  }
+
+  .character-two {
+    right: 0;
+    bottom: 0;
+    width: 55%;
+    height: 300px;
+    border: 5px solid var(--bg);
+  }
+
+  .art-label {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .art-label span {
+    color: var(--accent);
+  }
+
+  @media (max-width: 800px) {
+    .hero {
+      min-height: auto;
+    }
+
+    .hero-container {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+
+    .hero-art {
+      min-height: 400px;
+    }
+
+    .hero-bottom {
+      margin-top: 60px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .hero h1 {
+      letter-spacing: -2px;
+    }
+
+    .hero-actions {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .hero-art {
+      min-height: 320px;
+    }
+
+    .character {
+      height: 280px;
+    }
+
+    .character-two {
+      height: 210px;
+    }
+
+    .hero-bottom {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+</style>

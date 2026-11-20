@@ -1,0 +1,120 @@
+
+---
+import { assets } from "../data/assets";
+---
+
+<section class="about section" id="about">
+  <div class="container about-grid">
+    <div class="about-image">
+      <img
+        src={assets.workplace}
+        alt="Creative workspace"
+        loading="lazy"
+      />
+      <span>HELIAS / CREATIVE SPACE</span>
+    </div>
+
+    <div class="about-content">
+      <span class="section-label">ABOUT THE STUDIO / 03</span>
+
+      <h2>
+        Imagination is where
+        <span>everything begins.</span>
+      </h2>
+
+      <p>
+        HELIAS is a creative game development studio driven by
+        imagination, design, and technology.
+      </p>
+
+      <p>
+        We explore ideas, create visual worlds, and develop
+        experiences that bring creativity and interaction together.
+      </p>
+
+      <a href="#contact" class="about-link">
+        Get to know us <span>↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    background: var(--surface);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 75px;
+  }
+
+  .about-image img {
+    width: 100%;
+    height: 440px;
+    object-fit: cover;
+    background: #111;
+  }
+
+  .about-image > span {
+    display: block;
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 1.3px;
+  }
+
+  .section-label {
+    color: var(--accent);
+    font-size: 9px;
+    letter-spacing: 1.7px;
+  }
+
+  .about-content h2 {
+    margin: 20px 0;
+    color: var(--text);
+    font-family: var(--font-heading);
+    font-size: clamp(35px, 4.5vw, 54px);
+    line-height: 1.15;
+    letter-spacing: -2px;
+    font-weight: 500;
+  }
+
+  .about-content h2 span {
+    display: block;
+    color: #777;
+  }
+
+  .about-content p {
+    max-width: 440px;
+    margin-bottom: 17px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.9;
+  }
+
+  .about-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--text);
+    font-size: 11px;
+  }
+
+  .about-link span {
+    margin-left: 10px;
+    color: var(--accent);
+  }
+
+  @media (max-width: 750px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .about-image img {
+      height: 320px;
+    }
+  }
+</style>

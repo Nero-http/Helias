@@ -1,0 +1,107 @@
+
+---
+interface Props {
+  number?: string;
+  title: string;
+  category?: string;
+  description?: string;
+  image?: string;
+  href?: string;
+  status?: string;
+}
+
+const {
+  number = "01",
+  title,
+  category,
+  description,
+  image,
+  href = "#",
+  status
+} = Astro.props;
+---
+
+<article class="minimal-card">
+  {image && (
+    <a href={href} class="card-image">
+      <img src={image} alt={title} loading="lazy" />
+      <span>{number}</span>
+    </a>
+  )}
+
+  <div class="card-content">
+    <div>
+      {category && <span class="category">{category}</span>}
+      <h3>{title}</h3>
+      {description && <p>{description}</p>}
+    </div>
+
+    {status && <span class="status">{status}</span>}
+  </div>
+</article>
+
+<style>
+  .minimal-card {
+    min-width: 0;
+  }
+
+  .card-image {
+    position: relative;
+    display: block;
+    height: 260px;
+    overflow: hidden;
+    background: #111;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .card-image:hover img {
+    transform: scale(1.04);
+  }
+
+  .card-image > span {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    color: white;
+    font-size: 10px;
+  }
+
+  .card-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .category {
+    color: var(--accent);
+    font-size: 9px;
+  }
+
+  .card-content h3 {
+    margin-top: 7px;
+    color: var(--text);
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .card-content p {
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.7;
+  }
+
+  .status {
+    color: var(--muted);
+    font-size: 9px;
+  }
+</style>
