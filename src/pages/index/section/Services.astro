@@ -22,6 +22,8 @@ const services = [
     description: "Designing visual identities and interfaces with purpose."
   }
 ];
+
+const skills = ["C++", "HTML", "CSS", "Astro", "JavaScript", "PHP", "TypeScript", "GSAP"];
 ---
 
 <section id="services" class="services section">
@@ -48,6 +50,13 @@ const services = [
           <span class="service-arrow" aria-hidden="true">↗</span>
         </article>
       ))}
+    </div>
+
+    <div class="skills">
+      <h3>Technical Skills</h3>
+      <ul class="skill-list">
+        {skills.map((skill) => <li>{skill}</li>)}
+      </ul>
     </div>
   </div>
 </section>
@@ -95,6 +104,40 @@ const services = [
 
 .service-list {
   border-top: 1px solid var(--border);
+}
+
+.skills {
+  margin-top: clamp(42px, 6vw, 72px);
+}
+
+.skills h3 {
+  color: var(--text);
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+  margin: 0 0 20px;
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.skill-list li {
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+  transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.skill-list li:hover {
+  color: var(--text);
+  border-color: var(--accent);
+  background: var(--surface);
 }
 
 .service-item {

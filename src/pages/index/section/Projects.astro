@@ -1,26 +1,44 @@
-
 ---
-const projects = [
+const skillGroups = [
   {
-    number: "01",
-    title: "Digital Environments",
-    category: "ENVIRONMENT / VISUAL CONCEPT",
-    description: "Exploring atmosphere, composition, and immersive digital spaces.",
-    image: "https://i.pinimg.com/1200x/8e/40/4a/8e404aed59d8b7e1caade6a26514cc42.jpg"
+    title: "Technical Skills",
+    images: [
+      {
+        src: "/image/skills/technical-skills-1.png",
+        alt: "Hardware store website design",
+        description:
+          "A neighborhood hardware store website presenting its products and services."
+      },
+      {
+        src: "/image/skills/technical-skills-2.png",
+        alt: "Pharmacy prescription system website design",
+        description:
+          "A web-based pharmacy system for managing patients, medicines, and prescriptions."
+      }
+    ]
   },
   {
-    number: "02",
-    title: "Visual Concepts",
-    category: "CREATIVE / DIGITAL DESIGN",
-    description: "A study of visual direction, aesthetics, and creative expression.",
-    image: "https://i.pinimg.com/736x/0b/4b/19/0b4b193422503575d7fb6bd73d1f0bdb.jpg"
-  },
-  {
-    number: "03",
-    title: "Creative Worlds",
-    category: "ART / WORLD BUILDING",
-    description: "Imagining unique worlds through digital creativity and design.",
-    image: "https://i.pinimg.com/736x/c3/1d/d2/c31dd2a3db4568d165afea1ac2e08b2b.jpg"
+    title: "Non-Technical Skills",
+    images: [
+      {
+        src: "/image/skills/non-technical-skills-1.png",
+        alt: "Computer studies jersey design mockup",
+        description:
+          "A front-and-back jersey mockup created for a computer studies identity."
+      },
+      {
+        src: "/image/skills/non-technical-skills-2.png",
+        alt: "Figma interface and prototype design",
+        description:
+          "A Figma prototype connecting laptop detail and reservation screens."
+      },
+      {
+        src: "/image/skills/non-technical-skills-3.png",
+        alt: "Teacher's Day poster design",
+        description:
+          "A warm, classroom-inspired poster celebrating Teacher's Day."
+      }
+    ]
   }
 ];
 ---
@@ -29,193 +47,120 @@ const projects = [
   <div class="container">
     <div class="projects-heading">
       <div>
-        <p class="section-label">04 / SELECTED WORK</p>
-        <h2>Ideas made <span>visible.</span></h2>
+        <p class="section-label">04 / SKILLS & WORK</p>
+        <h2>Skills in <span>action.</span></h2>
       </div>
       <p class="projects-intro">
-        A collection of creative explorations, visual concepts, and inspiration.
+        A selection of technical projects and creative work.
       </p>
     </div>
 
-    <div class="project-grid">
-      {projects.map((project) => (
-        <article class="project-card">
-          <div class="project-image">
-            <img src={project.image} alt={project.title} loading="lazy" />
-            <span class="project-number">{project.number}</span>
-            <span class="project-open" aria-hidden="true">↗</span>
-          </div>
-
-          <div class="project-info">
-            <div>
-              <p>{project.category}</p>
-              <h3>{project.title}</h3>
-              <span class="project-description">{project.description}</span>
-            </div>
-          </div>
-        </article>
-      ))}
-    </div>
-
-    <p class="project-note">
-      SELECTED CREATIVE EXPLORATIONS — VISUAL REFERENCES AND CONCEPTS.
-    </p>
+    {skillGroups.map((group) => (
+      <div class="skill-group">
+        <h3>{group.title}</h3>
+        <div class="skill-image-grid">
+          {group.images.map((image) => (
+            <figure class="skill-image">
+              <img src={image.src} alt={image.alt} loading="lazy" />
+              <figcaption>{image.description}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    ))}
   </div>
 </section>
 
 <style>
-.projects {
-  background: var(--surface);
-}
+  .projects {
+    background: var(--surface);
+  }
 
-.projects-heading {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 32px;
-  margin-bottom: clamp(36px, 5vw, 56px);
-}
-
-.section-label {
-  color: var(--accent);
-  font-size: 10px;
-  letter-spacing: 2px;
-  font-weight: 700;
-  margin: 0 0 18px;
-}
-
-.projects-heading h2 {
-  color: var(--text);
-  font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 6vw, 4.75rem);
-  letter-spacing: -0.055em;
-  line-height: 1;
-  margin: 0;
-}
-
-.projects-heading h2 span {
-  color: var(--accent);
-}
-
-.projects-intro {
-  color: var(--muted);
-  max-width: 310px;
-  line-height: 1.75;
-  margin: 0 0 4px;
-}
-
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(18px, 2.5vw, 30px);
-}
-
-.project-card {
-  min-width: 0;
-}
-
-.project-large {
-  grid-row: span 2;
-}
-
-.project-image {
-  position: relative;
-  aspect-ratio: 1.08;
-  overflow: hidden;
-  background: var(--bg);
-}
-
-.project-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.65s ease, filter 0.65s ease;
-  filter: saturate(0.82);
-}
-
-.project-card:hover .project-image img {
-  transform: scale(1.035);
-  filter: saturate(1);
-}
-
-.project-number,
-.project-open {
-  position: absolute;
-  top: 14px;
-  color: #fff;
-  font-size: 11px;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
-}
-
-.project-number {
-  left: 14px;
-}
-
-.project-open {
-  right: 14px;
-  font-size: 18px;
-  transition: color 0.25s ease, transform 0.25s ease;
-}
-
-.project-card:hover .project-open {
-  color: var(--accent);
-  transform: translate(3px, -3px);
-}
-
-.project-info {
-  display: flex;
-  justify-content: space-between;
-  padding: 17px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.project-info p {
-  color: var(--accent);
-  font-size: 9px;
-  letter-spacing: 1.5px;
-  margin: 0 0 8px;
-}
-
-.project-info h3 {
-  color: var(--text);
-  font-family: var(--font-heading);
-  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
-  margin: 0 0 7px;
-}
-
-.project-description {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.65;
-}
-
-.project-note {
-  color: var(--muted);
-  font-size: 9px;
-  letter-spacing: 1.5px;
-  margin: 32px 0 0;
-}
-
-@media (max-width: 900px) {
   .projects-heading {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 16px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+    margin-bottom: clamp(36px, 5vw, 56px);
   }
 
-  .project-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 560px) {
-  .project-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
+  .section-label {
+    color: var(--accent);
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin: 0 0 18px;
   }
 
-  .project-image {
-    aspect-ratio: 1.2;
+  .projects-heading h2 {
+    color: var(--text);
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 6vw, 4.75rem);
+    letter-spacing: -0.055em;
+    line-height: 1;
+    margin: 0;
   }
-}
+
+  .projects-heading h2 span {
+    color: var(--accent);
+  }
+
+  .projects-intro {
+    color: var(--muted);
+    max-width: 310px;
+    line-height: 1.75;
+    margin: 0 0 4px;
+  }
+
+  .skill-group + .skill-group {
+    margin-top: 52px;
+  }
+
+  .skill-group h3 {
+    color: var(--text);
+    font-family: var(--font-heading);
+    font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+    margin: 0 0 20px;
+  }
+
+  .skill-image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: clamp(16px, 2.5vw, 28px);
+  }
+
+  .skill-image {
+    min-width: 0;
+    overflow: hidden;
+    background: var(--surface-light);
+    border: 1px solid var(--border);
+  }
+
+  .skill-image img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+  }
+
+  .skill-image:hover img {
+    transform: scale(1.035);
+  }
+
+  .skill-image figcaption {
+    padding: 14px 16px 16px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.65;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 900px) {
+    .projects-heading {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
 </style>

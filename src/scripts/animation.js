@@ -204,7 +204,7 @@ function initializeAnimations() {
     // PROJECTS - CINEMATIC REVEAL
     // =====================================
 
-    gsap.utils.toArray(".project-card").forEach((card, index) => {
+    gsap.utils.toArray(".skill-image").forEach((card, index) => {
       const image = card.querySelector("img");
 
       gsap.fromTo(
