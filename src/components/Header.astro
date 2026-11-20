@@ -1,7 +1,5 @@
 
 ---
-import { assets } from "../data/assets";
-
 const links = [
   { label: "Home", href: "#home" },
   { label: "Services", href: "#services" },
@@ -13,7 +11,7 @@ const links = [
 <header class="site-header">
   <div class="header-inner">
     <a href="#home" class="brand" aria-label="HELIAS home">
-      <img src={assets.logo} alt="HELIAS logo" />
+      <img src="/image/logo.png" alt="Helias Logo" />
       <span>HELIAS<span class="accent">.</span></span>
     </a>
 
@@ -100,6 +98,10 @@ const links = [
     width: 36px;
     height: 36px;
     object-fit: contain;
+  }
+
+  .brand > span {
+    transform: translateY(2px);
   }
 
   .accent {

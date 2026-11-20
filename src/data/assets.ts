@@ -1,6 +1,6 @@
 
 export const assets = {
-  logo: "https://cdn.phototourl.com/anon/2026-11-20-54e92274-9faa-4647-a534-0708c8eae92f.png",
+  logo: "/image/logo.png",
 
   characters: [
     "https://i.pinimg.com/1200x/17/d2/e5/17d2e53b25c9d56803e8c54f87c00cc0.jpg",
