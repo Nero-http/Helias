@@ -28,7 +28,7 @@ const skills = ["C++", "HTML", "CSS", "Astro", "JavaScript", "PHP", "TypeScript"
 
 <section id="services" class="services section">
   <div class="container">
-    <div class="section-heading">
+    <div class="section-heading" data-scroll-target>
       <div>
         <p class="section-label">01 / WHAT WE DO</p>
         <h2>Our <span>expertise.</span></h2>
@@ -70,22 +70,22 @@ const skills = ["C++", "HTML", "CSS", "Astro", "JavaScript", "PHP", "TypeScript"
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 32px;
-  margin-bottom: clamp(36px, 5vw, 60px);
+  gap: 28.8px;
+  margin-bottom: clamp(28.8px, 4vw, 43.2px);
 }
 
 .section-label {
   color: var(--accent);
-  font-size: 10px;
-  letter-spacing: 2px;
+  font-size: 8.8px;
+  letter-spacing: 1.75px;
   font-weight: 700;
-  margin: 0 0 18px;
+  margin: 0 0 16.2px;
 }
 
 .section-heading h2 {
   color: var(--text);
   font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 6vw, 4.75rem);
+  font-size: clamp(2.43rem, 5.82vw, 4.61rem);
   line-height: 1.02;
   letter-spacing: -0.055em;
   margin: 0;
@@ -96,10 +96,10 @@ const skills = ["C++", "HTML", "CSS", "Astro", "JavaScript", "PHP", "TypeScript"
 }
 
 .section-intro {
-  max-width: 320px;
+  max-width: 288px;
   color: var(--muted);
   line-height: 1.75;
-  margin: 0 0 4px;
+  margin: 0 0 3.6px;
 }
 
 .service-list {
@@ -107,30 +107,30 @@ const skills = ["C++", "HTML", "CSS", "Astro", "JavaScript", "PHP", "TypeScript"
 }
 
 .skills {
-  margin-top: clamp(42px, 6vw, 72px);
+  margin-top: clamp(32.4px, 4vw, 50.4px);
 }
 
 .skills h3 {
   color: var(--text);
   font-family: var(--font-heading);
-  font-size: clamp(1.2rem, 2.5vw, 1.75rem);
-  margin: 0 0 20px;
+  font-size: clamp(1.16rem, 2.43vw, 1.7rem);
+  margin: 0 0 18px;
 }
 
 .skill-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10.8px;
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
 .skill-list li {
-  padding: 10px 16px;
+  padding: 8.73px 13.95px;
   border: 1px solid var(--border);
   color: var(--muted);
-  font-size: 13px;
+  font-size: 11.34px;
   transition:
     color 0.25s ease,
     border-color 0.25s ease,
@@ -149,29 +149,29 @@ const skills = ["C++", "HTML", "CSS", "Astro", "JavaScript", "PHP", "TypeScript"
 
 .service-item {
   display: grid;
-  grid-template-columns: 52px minmax(0, 1fr) 32px;
+  grid-template-columns: 45.45px minmax(0, 1fr) 27.9px;
   align-items: center;
-  gap: clamp(12px, 2vw, 24px);
-  padding: clamp(22px, 3vw, 32px) 16px;
+  gap: clamp(10.8px, 2vw, 21.6px);
+  padding: clamp(19.35px, 1.94vw, 24.48px) 13.95px;
   border-bottom: 1px solid var(--border);
   transition: background-color 0.25s ease, padding 0.25s ease;
 }
 
 .service-item:hover {
-  padding-inline: 24px 12px;
+  padding-inline: 21.6px 10.8px;
   background: var(--surface);
 }
 
 .service-number {
   color: var(--accent);
-  font-size: 11px;
+  font-size: 9.63px;
   letter-spacing: 1px;
 }
 
 .service-main h3 {
   color: var(--text);
   font-family: var(--font-heading);
-  font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+  font-size: clamp(1.16rem, 2.43vw, 1.7rem);
   line-height: 1.2;
   margin: 0 0 6px;
 }
@@ -184,7 +184,7 @@ const skills = ["C++", "HTML", "CSS", "Astro", "JavaScript", "PHP", "TypeScript"
 
 .service-arrow {
   color: var(--muted);
-  font-size: 20px;
+  font-size: 17.55px;
   transition: color 0.25s ease, transform 0.25s ease;
 }
 
@@ -201,12 +201,12 @@ const skills = ["C++", "HTML", "CSS", "Astro", "JavaScript", "PHP", "TypeScript"
   }
 
   .service-item {
-    grid-template-columns: 32px minmax(0, 1fr) 20px;
-    padding-inline: 4px;
+    grid-template-columns: 27.9px minmax(0, 1fr) 17.55px;
+    padding-inline: 3.6px;
   }
 
   .service-item:hover {
-    padding-inline: 10px 0;
+    padding-inline: 9px 0;
   }
 }
 

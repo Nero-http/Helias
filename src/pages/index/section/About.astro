@@ -11,7 +11,7 @@
         <span class="image-caption">JEREMIAS SERVATOS & ANGHEL DY</span>
       </div>
 
-      <div class="about-content">
+      <div class="about-content" data-scroll-target>
         <p class="section-label">03 / WHO WE ARE</p>
         <h2>Beyond ideas.<br />Beyond <span>technology.</span></h2>
 
@@ -58,13 +58,15 @@
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
   align-items: center;
-  gap: clamp(40px, 7vw, 88px);
+  gap: clamp(36px, 6vw, 72px);
 }
 
 .about-image {
   position: relative;
+  width: 98%;
+  justify-self: center;
   aspect-ratio: 0.9;
-  max-height: 580px;
+  max-height: 508.5px;
   overflow: hidden;
   background: var(--surface);
 }
@@ -82,11 +84,11 @@
 
 .image-caption {
   position: absolute;
-  left: 22px;
-  bottom: 22px;
+  left: 19.8px;
+  bottom: 19.8px;
   color: #fff;
-  font-size: 10px;
-  letter-spacing: 2px;
+  font-size: 8.8px;
+  letter-spacing: 1.75px;
   font-weight: 700;
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
 }
@@ -96,16 +98,16 @@
   font-size: 10px;
   letter-spacing: 2px;
   font-weight: 700;
-  margin: 0 0 22px;
+  margin: 0 0 19.8px;
 }
 
 .about-content h2 {
   color: var(--text);
   font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 4.5vw, 4.25rem);
+  font-size: clamp(2.43rem, 4.37vw, 4.12rem);
   letter-spacing: -0.055em;
   line-height: 1.02;
-  margin: 0 0 24px;
+  margin: 0 0 21.6px;
 }
 
 .about-content h2 span {
@@ -114,39 +116,39 @@
 
 .about-description {
   color: var(--muted);
-  line-height: 1.9;
-  max-width: 500px;
-  margin-bottom: 18px;
+  line-height: 1.8;
+  max-width: 450px;
+  margin-bottom: 16.2px;
 }
 
 .about-values {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-top: 32px;
+  margin-top: 25.2px;
   border-top: 1px solid var(--border);
 }
 
 .about-values div {
-  padding: 17px 0;
+  padding: 13.5px 0;
   border-bottom: 1px solid var(--border);
 }
 
 .about-values span {
   color: var(--accent);
-  font-size: 11px;
+  font-size: 9.63px;
 }
 
 .about-values h3 {
   color: var(--text);
   font-family: var(--font-heading);
-  font-size: 15px;
-  margin: 9px 0 0;
+  font-size: 13.14px;
+  margin: 8.1px 0 0;
 }
 
 @media (max-width: 850px) {
   .about-layout {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 32.4px;
   }
 
   .about-image {
@@ -161,9 +163,9 @@
   }
 
   .about-content h2 {
-    font-size: clamp(2.35rem, 11vw, 3.25rem);
+    font-size: clamp(2.28rem, 10.67vw, 3.15rem);
   }
 
-  .about-values h3 { font-size: 14px; }
+  .about-values h3 { font-size: 12.24px; }
 }
 </style>

@@ -2,7 +2,7 @@
 <section id="home" class="hero">
   <div class="hero-grid"></div>
 
-  <div class="hero-content">
+  <div class="hero-content" data-scroll-target>
     <p class="eyebrow">
       <span class="status-dot"></span>
       CREATIVE DIGITAL DEVELOPMENT TEAM
@@ -37,11 +37,11 @@
 
 <style>
 .hero {
-  min-height: clamp(620px, calc(100svh - 76px), 900px);
+  min-height: clamp(560px, calc(100svh - var(--header-height)), 810px);
   position: relative;
   display: flex;
   align-items: center;
-  padding: clamp(120px, 17vh, 170px) var(--gutter) clamp(130px, 16vh, 160px);
+  padding: clamp(58px, 9vh, 82px) var(--gutter) clamp(120px, 14vh, 145px);
   overflow: hidden;
   background: var(--bg);
 }
@@ -54,7 +54,7 @@
   background-image:
     linear-gradient(var(--muted) 1px, transparent 1px),
     linear-gradient(90deg, var(--muted) 1px, transparent 1px);
-  background-size: 70px 70px;
+  background-size: 63px 63px;
   mask-image: linear-gradient(to right, black, transparent 80%);
 }
 
@@ -68,17 +68,17 @@
 .eyebrow {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 9px;
   color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 0.16em;
+  font-size: 9px;
+  letter-spacing: 0.144em;
   font-weight: 700;
-  margin: 0 0 clamp(24px, 4vw, 34px);
+  margin: 0 0 38px;
 }
 
 .status-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   background: var(--accent);
   border-radius: 50%;
   box-shadow: 0 0 10px rgba(0, 239, 80, 0.4);
@@ -87,7 +87,7 @@
 .hero h1 {
   font-family: var(--font-heading);
   color: var(--text);
-  font-size: clamp(3.25rem, 8vw, 7.25rem);
+  font-size: clamp(3.15rem, 7.76vw, 7.03rem);
   line-height: 0.98;
   letter-spacing: -0.065em;
   font-weight: 700;
@@ -100,25 +100,25 @@
 
 .hero-description {
   color: var(--muted);
-  max-width: 470px;
+  max-width: 423px;
   line-height: 1.8;
-  margin: 26px 0 0;
+  margin: 17px 0 0;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 30px;
+  margin-top: 21px;
 }
 
 .primary-btn,
 .secondary-btn {
   display: inline-flex;
   align-items: center;
-  gap: 20px;
-  padding: 14px 19px;
-  font-size: 13px;
+  gap: 17.55px;
+  padding: 12.24px 16.65px;
+  font-size: 11.34px;
   font-weight: 700;
   transition: transform 0.25s ease, color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
 }
@@ -146,30 +146,30 @@
 
 .hero-bottom {
   position: absolute;
-  bottom: 26px;
+  bottom: 23.4px;
   left: 50%;
   width: min(var(--container), calc(100% - var(--gutter) * 2));
   display: flex;
   justify-content: space-between;
   gap: 16px;
   color: var(--muted);
-  font-size: 9px;
+  font-size: 8px;
   letter-spacing: 0.12em;
   transform: translateX(-50%);
 }
 
 @media (max-width: 700px) {
   .hero {
-    min-height: min(760px, calc(100svh - 68px));
-    padding-block: 110px 110px;
+    min-height: min(684px, calc(100svh - var(--header-height)));
+    padding-block: 99px;
   }
 
   .hero h1 {
-    font-size: clamp(3rem, 12.5vw, 5rem);
+    font-size: clamp(2.91rem, 12.13vw, 4.85rem);
   }
 
   .hero-bottom {
-    font-size: 8px;
+    font-size: 7.2px;
   }
 
   .hero-bottom span:nth-child(2) {
@@ -179,16 +179,16 @@
 
 @media (max-width: 380px) {
   .eyebrow {
-    font-size: 9px;
-    letter-spacing: 0.12em;
+    font-size: 8.1px;
+    letter-spacing: 0.108em;
   }
 
-  .hero h1 { font-size: 2.85rem; }
+  .hero h1 { font-size: 2.484rem; }
 
   .hero-actions {
     align-items: stretch;
     flex-direction: column;
-    max-width: 240px;
+    max-width: 216px;
   }
 
   .hero-actions a { justify-content: space-between; }

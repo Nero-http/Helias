@@ -26,7 +26,7 @@ const steps = [
 
 <section id="process" class="process section">
   <div class="container">
-    <div class="process-heading">
+    <div class="process-heading" data-scroll-target>
       <div>
         <p class="section-label">02 / HOW WE WORK</p>
         <h2>From concept<br />to <span>creation.</span></h2>
@@ -60,22 +60,22 @@ const steps = [
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 32px;
-  margin-bottom: clamp(40px, 6vw, 68px);
+  gap: 28.8px;
+  margin-bottom: clamp(28.8px, 4.5vw, 50.4px);
 }
 
 .section-label {
   color: var(--accent);
-  font-size: 10px;
-  letter-spacing: 2px;
+  font-size: 8.8px;
+  letter-spacing: 1.75px;
   font-weight: 700;
-  margin: 0 0 20px;
+  margin: 0 0 18px;
 }
 
 .process-heading h2 {
   color: var(--text);
   font-family: var(--font-heading);
-  font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+  font-size: clamp(2.72rem, 5.24vw, 4.61rem);
   line-height: 1;
   letter-spacing: -0.055em;
   margin: 0;
@@ -99,7 +99,7 @@ const steps = [
 
 .process-item {
   min-width: 0;
-  padding: 0 clamp(16px, 2.2vw, 28px);
+  padding: 0 clamp(14.4px, 2.2vw, 25.2px);
   border-left: 1px solid var(--border);
 }
 
@@ -109,8 +109,8 @@ const steps = [
   justify-content: space-between;
   align-items: center;
   color: var(--accent);
-  font-size: 11px;
-  margin-bottom: clamp(32px, 4vw, 48px);
+  font-size: 9.63px;
+  margin-bottom: clamp(28.8px, 4vw, 43.2px);
 }
 
 .process-top::before {
@@ -135,24 +135,24 @@ const steps = [
 }
 
 .process-top > span:first-child {
-  padding-right: 12px;
+  padding-right: 10.8px;
 }
 
 .process-symbol {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   display: block;
   border: 0;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 0 5px var(--bg), 0 0 0 6px var(--border);
+  box-shadow: 0 0 0 4.41px var(--bg), 0 0 0 5.22px var(--border);
 }
 
 .process-item h3 {
   color: var(--text);
   font-family: var(--font-heading);
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
-  margin: 0 0 10px;
+  font-size: clamp(1.21rem, 1.94vw, 1.46rem);
+  margin: 0 0 9px;
 }
 
 .process-item p {
@@ -170,7 +170,7 @@ const steps = [
 
   .process-grid {
     grid-template-columns: repeat(2, 1fr);
-    row-gap: 38px;
+    row-gap: 34.2px;
   }
 
   .process-item:nth-child(odd) {
@@ -181,7 +181,7 @@ const steps = [
 @media (max-width: 520px) {
   .process-grid {
     grid-template-columns: 1fr;
-    row-gap: 28px;
+    row-gap: 25.2px;
   }
 
   .process-item,
@@ -190,7 +190,7 @@ const steps = [
   }
 
   .process-top {
-    margin-bottom: 22px;
+    margin-bottom: 19.8px;
   }
 }
 </style>

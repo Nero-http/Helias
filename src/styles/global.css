@@ -10,9 +10,11 @@ html[data-theme="dark"] {
   --border: rgba(255, 255, 255, 0.12);
   --font-heading: "Space Grotesk", sans-serif;
   --font-body: "DM Sans", sans-serif;
-  --container: 1200px;
-  --gutter: clamp(20px, 5vw, 48px);
-  --section-space: clamp(76px, 9vw, 128px);
+  --header-height: 64px;
+  --anchor-gap: 12px;
+  --container: 1152px;
+  --gutter: clamp(18px, 4vw, 58px);
+  --section-space: clamp(50px, 6vw, 86px);
 }
 
 html[data-theme="light"] {
@@ -31,18 +33,19 @@ html[data-theme="light"] {
 }
 
 html {
+  font-size: 90%;
   scroll-behavior: smooth;
-  scroll-padding-top: 88px;
+  scroll-padding-top: calc(var(--header-height) + var(--anchor-gap));
 }
 
 body {
-  min-width: 320px;
+  min-width: 0;
   margin: 0;
   overflow-x: clip;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: clamp(14px, 1vw, 16px);
+  font-size: clamp(12.24px, 0.97vw, 13.95px);
   line-height: 1.6;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -75,6 +78,7 @@ img {
 
 .section {
   padding-block: var(--section-space);
+  overflow-x: clip;
 }
 
 #progressBar {

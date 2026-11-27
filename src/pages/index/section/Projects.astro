@@ -45,7 +45,7 @@ const skillGroups = [
 
 <section id="projects" class="projects section">
   <div class="container">
-    <div class="projects-heading">
+    <div class="projects-heading" data-scroll-target>
       <div>
         <p class="section-label">04 / SKILLS & WORK</p>
         <h2>Skills in <span>action.</span></h2>
@@ -80,22 +80,22 @@ const skillGroups = [
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    gap: 32px;
-    margin-bottom: clamp(36px, 5vw, 56px);
+    gap: 28.8px;
+    margin-bottom: clamp(28.8px, 4vw, 43.2px);
   }
 
   .section-label {
     color: var(--accent);
-    font-size: 10px;
-    letter-spacing: 2px;
+    font-size: 8.8px;
+    letter-spacing: 1.75px;
     font-weight: 700;
-    margin: 0 0 18px;
+    margin: 0 0 16.2px;
   }
 
   .projects-heading h2 {
     color: var(--text);
     font-family: var(--font-heading);
-    font-size: clamp(2.5rem, 6vw, 4.75rem);
+    font-size: clamp(2.43rem, 5.82vw, 4.61rem);
     letter-spacing: -0.055em;
     line-height: 1;
     margin: 0;
@@ -107,30 +107,31 @@ const skillGroups = [
 
   .projects-intro {
     color: var(--muted);
-    max-width: 310px;
+    max-width: 279px;
     line-height: 1.75;
     margin: 0 0 4px;
   }
 
   .skill-group + .skill-group {
-    margin-top: 52px;
+    margin-top: clamp(32.4px, 4vw, 43.2px);
   }
 
   .skill-group h3 {
     color: var(--text);
     font-family: var(--font-heading);
-    font-size: clamp(1.35rem, 2.4vw, 1.8rem);
-    margin: 0 0 20px;
+    font-size: clamp(1.31rem, 2.33vw, 1.75rem);
+    margin: 0 0 18px;
   }
 
   .skill-image-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-    gap: clamp(16px, 2.5vw, 28px);
+    gap: clamp(14.4px, 2.5vw, 25.2px);
   }
 
   .skill-image {
     min-width: 0;
+    margin: 0;
     overflow: hidden;
     background: var(--surface-light);
     border: 1px solid var(--border);
@@ -138,7 +139,8 @@ const skillGroups = [
 
   .skill-image img {
     display: block;
-    width: 100%;
+    width: 98%;
+    margin-inline: auto;
     aspect-ratio: 16 / 10;
     object-fit: contain;
     transition: transform 0.5s ease;
@@ -149,9 +151,9 @@ const skillGroups = [
   }
 
   .skill-image figcaption {
-    padding: 14px 16px 16px;
+    padding: 12.6px 14.4px 14.4px;
     color: var(--muted);
-    font-size: 13px;
+    font-size: 11.34px;
     line-height: 1.65;
     border-top: 1px solid var(--border);
   }

@@ -18,6 +18,9 @@ function initializeContactModal() {
 
   if (!trigger || !modal || !dialog || !form || !status) return;
 
+  const modalContent = dialog.querySelectorAll(
+    ".section-label, h2, .contact-modal-intro, .contact-field, .contact-submit"
+  );
   const closeButtons = modal.querySelectorAll("[data-contact-close]");
   const reducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
@@ -48,15 +51,26 @@ function initializeContactModal() {
       )
       .fromTo(
         dialog,
-        { opacity: 0, y: 18, scale: 0.97 },
+        { opacity: 0, scale: 0.95 },
         {
           opacity: 1,
-          y: 0,
           scale: 1,
           duration: reducedMotion ? 0.01 : 0.38,
           ease: "power3.out"
         },
         0
+      )
+      .fromTo(
+        modalContent,
+        { opacity: 0, y: 8 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: reducedMotion ? 0.01 : 0.24,
+          stagger: reducedMotion ? 0 : 0.045,
+          ease: "power2.out"
+        },
+        0.08
       );
 
     form.querySelector("input")?.focus({ preventScroll: true });
@@ -79,11 +93,21 @@ function initializeContactModal() {
     modalTimeline
       .to(dialog, {
         opacity: 0,
-        y: 12,
-        scale: 0.98,
-        duration: reducedMotion ? 0.01 : 0.2,
+        scale: 0.96,
+        duration: reducedMotion ? 0.01 : 0.24,
         ease: "power2.in"
       })
+      .to(
+        modalContent,
+        {
+          opacity: 0,
+          y: -4,
+          duration: reducedMotion ? 0.01 : 0.12,
+          stagger: reducedMotion ? 0 : 0.015,
+          ease: "power1.in"
+        },
+        0
+      )
       .to(
         modal,
         {
@@ -234,7 +258,11 @@ function initializeAnimations() {
     // SECTION LABELS - SLIDE FROM LEFT
     // =====================================
 
-    gsap.utils.toArray(".section-label").forEach((element) => {
+    const sectionLabels = gsap.utils.toArray(
+      ".section-label:not(.contact-modal-label)"
+    );
+
+    sectionLabels.forEach((element) => {
       gsap.fromTo(
         element,
         {
