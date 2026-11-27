@@ -55,7 +55,7 @@ const skills = ["C++", "HTML", "CSS", "Astro", "JavaScript", "PHP", "TypeScript"
     <div class="skills">
       <h3>Technical Skills</h3>
       <ul class="skill-list">
-        {skills.map((skill) => <li>{skill}</li>)}
+        {skills.map((skill) => <li class="technical-skill">{skill}</li>)}
       </ul>
     </div>
   </div>
@@ -131,13 +131,20 @@ const skills = ["C++", "HTML", "CSS", "Astro", "JavaScript", "PHP", "TypeScript"
   border: 1px solid var(--border);
   color: var(--muted);
   font-size: 13px;
-  transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
 }
 
 .skill-list li:hover {
   color: var(--text);
   border-color: var(--accent);
   background: var(--surface);
+  box-shadow: 0 0 18px rgba(0, 239, 80, 0.16);
+  transform: translateY(-3px) scale(1.02);
 }
 
 .service-item {
@@ -200,6 +207,13 @@ const skills = ["C++", "HTML", "CSS", "Astro", "JavaScript", "PHP", "TypeScript"
 
   .service-item:hover {
     padding-inline: 10px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-list li:hover {
+    box-shadow: none;
+    transform: none;
   }
 }
 </style>

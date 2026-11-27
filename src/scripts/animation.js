@@ -5,9 +5,175 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 let animationContext;
+let contactModalCleanup;
+
+function initializeContactModal() {
+  contactModalCleanup?.();
+
+  const trigger = document.querySelector("[data-contact-open]");
+  const modal = document.querySelector("[data-contact-modal]");
+  const dialog = modal?.querySelector(".contact-dialog");
+  const form = modal?.querySelector("[data-contact-form]");
+  const status = modal?.querySelector("[data-contact-status]");
+
+  if (!trigger || !modal || !dialog || !form || !status) return;
+
+  const closeButtons = modal.querySelectorAll("[data-contact-close]");
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+  let modalTimeline;
+  let isClosing = false;
+  let previouslyFocusedElement;
+
+  function openModal() {
+    if (!modal.hidden || isClosing) return;
+
+    previouslyFocusedElement = document.activeElement;
+    modal.hidden = false;
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("contact-modal-open");
+
+    modalTimeline?.kill();
+    modalTimeline = gsap.timeline();
+    modalTimeline
+      .fromTo(
+        modal,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: reducedMotion ? 0.01 : 0.3,
+          ease: "power2.out"
+        }
+      )
+      .fromTo(
+        dialog,
+        { opacity: 0, y: 18, scale: 0.97 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: reducedMotion ? 0.01 : 0.38,
+          ease: "power3.out"
+        },
+        0
+      );
+
+    form.querySelector("input")?.focus({ preventScroll: true });
+  }
+
+  function closeModal() {
+    if (modal.hidden || isClosing) return;
+
+    isClosing = true;
+    modalTimeline?.kill();
+    modalTimeline = gsap.timeline({
+      onComplete: () => {
+        modal.hidden = true;
+        modal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("contact-modal-open");
+        isClosing = false;
+        previouslyFocusedElement?.focus({ preventScroll: true });
+      }
+    });
+    modalTimeline
+      .to(dialog, {
+        opacity: 0,
+        y: 12,
+        scale: 0.98,
+        duration: reducedMotion ? 0.01 : 0.2,
+        ease: "power2.in"
+      })
+      .to(
+        modal,
+        {
+          opacity: 0,
+          duration: reducedMotion ? 0.01 : 0.18,
+          ease: "power2.in"
+        },
+        0
+      );
+  }
+
+  function handleKeydown(event) {
+    if (event.key === "Escape" && !modal.hidden) {
+      event.preventDefault();
+      closeModal();
+      return;
+    }
+
+    if (event.key !== "Tab" || modal.hidden) return;
+
+    const focusableElements = dialog.querySelectorAll(
+      "button:not([disabled]), input:not([disabled]), textarea:not([disabled]), [href], [tabindex]:not([tabindex='-1'])"
+    );
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    if (!firstElement) {
+      event.preventDefault();
+    } else if (
+      event.shiftKey &&
+      (document.activeElement === firstElement ||
+        !dialog.contains(document.activeElement))
+    ) {
+      event.preventDefault();
+      lastElement.focus();
+    } else if (
+      !event.shiftKey &&
+      (document.activeElement === lastElement ||
+        !dialog.contains(document.activeElement))
+    ) {
+      event.preventDefault();
+      firstElement.focus();
+    }
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    status.textContent =
+      "Thanks! Message delivery is not connected yet, so your message was not sent.";
+    status.hidden = false;
+  }
+
+  function clearStatus() {
+    status.hidden = true;
+    status.textContent = "";
+  }
+
+  trigger.addEventListener("click", openModal);
+  closeButtons.forEach((button) => {
+    button.addEventListener("click", closeModal);
+  });
+  document.addEventListener("keydown", handleKeydown);
+  form.addEventListener("submit", handleSubmit);
+  form.addEventListener("input", clearStatus);
+
+  contactModalCleanup = () => {
+    trigger.removeEventListener("click", openModal);
+    closeButtons.forEach((button) => {
+      button.removeEventListener("click", closeModal);
+    });
+    document.removeEventListener("keydown", handleKeydown);
+    form.removeEventListener("submit", handleSubmit);
+    form.removeEventListener("input", clearStatus);
+    modalTimeline?.kill();
+    gsap.killTweensOf([modal, dialog]);
+    modal.hidden = true;
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("contact-modal-open");
+  };
+}
 
 function initializeAnimations() {
   animationContext?.revert();
+  initializeContactModal();
 
   const reducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
@@ -201,6 +367,38 @@ function initializeAnimations() {
     });
 
     // =====================================
+    // TECHNICAL SKILLS - STAGGERED REVEAL
+    // =====================================
+
+    gsap.utils.toArray(".skill-list").forEach((list) => {
+      const skills = list.querySelectorAll(".technical-skill");
+
+      if (!skills.length) return;
+
+      gsap.fromTo(
+        skills,
+        {
+          opacity: 0,
+          y: 24,
+          scale: 0.96
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.65,
+          stagger: 0.08,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: list,
+            start: "top 88%",
+            toggleActions: "play reverse play reverse"
+          }
+        }
+      );
+    });
+
+    // =====================================
     // PROJECTS - CINEMATIC REVEAL
     // =====================================
 
@@ -315,4 +513,6 @@ document.addEventListener("astro:page-load", initializeAnimations);
 document.addEventListener("astro:before-swap", () => {
   animationContext?.revert();
   animationContext = undefined;
+  contactModalCleanup?.();
+  contactModalCleanup = undefined;
 });
